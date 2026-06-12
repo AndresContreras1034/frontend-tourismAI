@@ -1,0 +1,290 @@
+:root {
+  --verde-bosque: #5E815D;
+  --terracota: #C1865D;
+  --crema: #F2E7D5;
+  --marron: #4A3C31;
+  --verde-musgo: #A3B18A;
+  --blanco: #ffffff;
+}
+
+/* BASE */
+.plan-page {
+  background: var(--crema);
+  color: var(--marron);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ================= HERO ================= */
+.plan-hero {
+  position: relative;
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--verde-bosque),
+    var(--verde-musgo)
+  );
+  color: var(--blanco);
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.location {
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.score {
+  background: var(--blanco);
+  color: var(--marron);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.tag {
+  background: rgba(255,255,255,0.2);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+}
+
+.cta-primary {
+  background: var(--terracota);
+  color: var(--blanco);
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  background: #a96c49;
+}
+
+/* ================= SECCIONES ================= */
+section {
+  padding: 4rem 2rem;
+  max-width: 1100px;
+  margin: auto;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+}
+
+/* ================= CLAUDIA ================= */
+.assistant-card {
+  background: var(--blanco);
+  padding: 2rem;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.assistant-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.assistant-avatar {
+  width: 45px;
+  height: 45px;
+  background: var(--verde-bosque);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.3rem;
+}
+
+.assistant-badge {
+  font-size: 0.8rem;
+  background: var(--crema);
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+}
+
+.assistant-main {
+  margin-bottom: 1rem;
+}
+
+.assistant-recommendation {
+  background: var(--crema);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.assistant-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.assistant-actions button {
+  background: var(--verde-musgo);
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.assistant-actions button:hover {
+  background: var(--verde-bosque);
+  color: white;
+}
+
+/* ================= TRANSPORTE ================= */
+.transport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.transport-card {
+  background: var(--blanco);
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.transport-card img {
+  width: 50px;
+  margin-bottom: 1rem;
+}
+
+.transport-card span {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  background: var(--crema);
+  padding: 0.3rem 0.6rem;
+  border-radius: 10px;
+}
+
+/* ================= MAPA ================= */
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.map-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map-title img {
+  width: 30px;
+}
+
+.map-container {
+  margin-top: 2rem;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ================= EXPERIENCIA ================= */
+.highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.highlight-card {
+  background: var(--verde-musgo);
+  padding: 0.7rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* ================= PRESUPUESTO ================= */
+.budget-summary {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.budget-summary h1 {
+  font-size: 2.5rem;
+  color: var(--verde-bosque);
+}
+
+.budget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+}
+
+.budget-card {
+  background: var(--blanco);
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.budget-card img {
+  width: 40px;
+  margin-bottom: 0.5rem;
+}
+
+/* ================= CTA FINAL ================= */
+.final-cta {
+  text-align: center;
+  background: var(--verde-bosque);
+  color: white;
+  border-radius: 20px;
+  margin: 3rem auto;
+  padding: 3rem 2rem;
+}
+
+/* ================= LOADING ================= */
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

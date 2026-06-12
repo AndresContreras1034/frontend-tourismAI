@@ -1,0 +1,99 @@
+/* =========================
+   VARIABLES DE COLOR
+========================= */
+:root {
+  --verde-bosque: #5E815D;
+  --terracota: #C1865D;
+  --crema: #F2E7D5;
+  --marron: #4A3C31;
+  --verde-musgo: #A3B18A;
+  --blanco: #ffffff;
+}
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+.marketplace {
+  padding: 3rem 1.5rem;
+  background-color: var(--crema);
+}
+
+/* =========================
+   HEADER DE RESULTADOS
+========================= */
+.marketplace-header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.marketplace-header h2 {
+  color: var(--verde-bosque);
+  font-size: 2rem;
+}
+
+.marketplace-header p {
+  color: var(--marron);
+  font-size: 0.95rem;
+}
+
+/* =========================
+   GRID DE PLANES
+========================= */
+.marketplace-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.8rem;
+}
+
+/* =========================
+   LOADING STATE
+========================= */
+.marketplace-grid > p {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--marron);
+  padding: 2rem 0;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+.empty-state {
+  grid-column: 1 / -1;
+  background-color: var(--blanco);
+  border: 1px dashed var(--verde-musgo);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(74, 60, 49, 0.1);
+}
+
+.empty-state p {
+  font-size: 1rem;
+  color: var(--marron);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .marketplace {
+    padding: 2.5rem 1rem;
+  }
+
+  .marketplace-header h2 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .marketplace-grid {
+    gap: 1.2rem;
+  }
+}

@@ -1,0 +1,199 @@
+/* =========================
+   OVERLAY
+========================= */
+.mfa-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+}
+
+/* =========================
+   MODAL
+========================= */
+.mfa-modal {
+  width: 100%;
+  max-width: 420px;
+  background: #f2e7d5; /* crema coherente con tu app */
+  border-radius: 20px;
+  padding: 1.8rem 1.6rem;
+  position: relative;
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  animation: mfa-pop 0.35s ease;
+}
+
+/* =========================
+   TITLE
+========================= */
+.mfa-modal h2 {
+  margin: 0;
+  text-align: center;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #5e815d;
+  letter-spacing: -0.3px;
+}
+
+/* =========================
+   GENERIC TEXT
+========================= */
+.mfa-modal p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.85;
+  text-align: center;
+}
+
+/* =========================
+   QR IMAGE
+========================= */
+.mfa-modal img {
+  display: block;
+  margin: 0.6rem auto;
+  width: 190px;
+  height: 190px;
+  border-radius: 14px;
+  background: #ffffff;
+  padding: 0.6rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   BACKUP SECRET
+========================= */
+.mfa-modal b {
+  font-weight: 700;
+  color: #2f3e34;
+}
+
+.mfa-modal p b {
+  word-break: break-all;
+}
+
+.mfa-modal p[style*="font-size: 12px"] {
+  font-size: 0.75rem !important;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+}
+
+/* =========================
+   INPUT (OTP)
+========================= */
+.mfa-modal input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: 0.95rem;
+  text-align: center;
+  letter-spacing: 0.18em;
+  outline: none;
+  background: #ffffff;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mfa-modal input:focus {
+  border-color: #5e815d;
+  box-shadow: 0 0 0 3px rgba(94, 129, 93, 0.25);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.mfa-modal button {
+  width: 100%;
+  margin-top: 0.6rem;
+  padding: 0.65rem;
+  border-radius: 14px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #5e815d, #4a6e4d);
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(94, 129, 93, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mfa-modal button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(94, 129, 93, 0.6);
+}
+
+.mfa-modal button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Close button (último botón “✕ Cerrar”) */
+.mfa-modal > button:last-of-type {
+  background: transparent;
+  color: #333;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.mfa-modal > button:last-of-type:hover {
+  opacity: 1;
+  transform: none;
+}
+
+/* =========================
+   SUCCESS STEP
+========================= */
+.mfa-modal h3 {
+  margin: 0.6rem 0 0.2rem;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #2f3e34;
+}
+
+/* =========================
+   ERROR
+========================= */
+.mfa-modal p[style*="color: red"] {
+  color: #b33030 !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes mfa-pop {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 480px) {
+  .mfa-modal {
+    margin: 0 1rem;
+    padding: 1.5rem;
+  }
+
+  .mfa-modal img {
+    width: 160px;
+    height: 160px;
+  }
+}

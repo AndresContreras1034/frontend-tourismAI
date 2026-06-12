@@ -1,0 +1,222 @@
+/* =========================================================
+   VARIABLES — AVENTURA INTELIGENTE
+   ========================================================= */
+
+:root {
+  --color-primary: #5E815D;        /* Verde Bosque */
+  --color-secondary: #C1865D;      /* Terracota Senda */
+  --color-bg: #F2E7D5;             /* Crema Orgánico */
+  --color-card: #A3B18A;           /* Verde Musgo Claro */
+
+  --color-text: #4A3C31;           /* Marrón Café */
+  --color-text-soft: #6B5A4D;
+  --color-text-muted: #8C7A6B;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --shadow-soft: 0 10px 25px rgba(74, 60, 49, 0.15);
+  --shadow-strong: 0 22px 45px rgba(74, 60, 49, 0.28);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 0.35s var(--ease-out);
+}
+
+/* =========================================================
+   FORM WRAPPER
+   ========================================================= */
+
+.filters-ai {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 3rem 3rem 3.5rem;
+  background: linear-gradient(
+    180deg,
+    rgba(163, 177, 138, 0.45),
+    rgba(163, 177, 138, 0.3)
+  );
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-text);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.filters-ai h2 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+.filters-ai > p {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--color-text-soft);
+  line-height: 1.6;
+}
+
+/* =========================================================
+   FIELD
+   ========================================================= */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.6rem;
+}
+
+.field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+  color: var(--color-text);
+}
+
+/* =========================================================
+   INPUTS & SELECTS
+   ========================================================= */
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(74, 60, 49, 0.35);
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  transition: border var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.field input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(193, 134, 93, 0.25);
+}
+
+/* =========================================================
+   INTERESTS GRID
+   ========================================================= */
+
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+/* =========================================================
+   INTEREST CHIP
+   ========================================================= */
+
+.interest-chip {
+  padding: 0.55rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(74, 60, 49, 0.3);
+  background: var(--color-bg);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    border var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+  color: var(--color-text);
+}
+
+.interest-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(74, 60, 49, 0.18);
+}
+
+.interest-chip.active {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(193, 134, 93, 0.45);
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+   ========================================================= */
+
+.btn-primary {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.9rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    #C1865D,
+    #B0734C
+  );
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(193, 134, 93, 0.45);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    filter var(--transition);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(193, 134, 93, 0.55);
+  filter: brightness(1.05);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 12px 24px rgba(193, 134, 93, 0.4);
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.interest-chip:focus-visible,
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .filters-ai {
+    padding: 2.2rem 1.6rem 2.6rem;
+  }
+
+  .filters-ai h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

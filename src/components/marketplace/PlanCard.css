@@ -1,0 +1,178 @@
+/* =========================
+   BASE CARD
+========================= */
+.plan-card {
+  background: var(--blanco);
+  border-radius: 22px;
+  padding: 1.8rem 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(74, 60, 49, 0.08);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================
+   HIGHLIGHT (BEST MATCH)
+========================= */
+.plan-card.highlight {
+  border: 2px solid var(--verde-bosque);
+  box-shadow:
+    0 22px 60px rgba(94, 129, 93, 0.35);
+}
+
+/* =========================
+   HEADER
+========================= */
+.plan-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.plan-card-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--marron);
+}
+
+/* =========================
+   SCORE BADGE
+========================= */
+.score-badge {
+  background: var(--verde-bosque);
+  color: var(--blanco);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* =========================
+   LOCATION
+========================= */
+.location {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--marron);
+  opacity: 0.75;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+.description {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--marron);
+  opacity: 0.85;
+}
+
+/* =========================
+   BUDGET
+========================= */
+.budget {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--verde-bosque);
+  margin-top: 0.2rem;
+}
+
+/* =========================
+   FLAGS
+========================= */
+.flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.flag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(74, 60, 49, 0.08);
+  color: var(--marron);
+}
+
+/* flags por tipo (si llegan) */
+.flag.warning {
+  background: rgba(193, 134, 93, 0.25);
+}
+
+.flag.critical {
+  background: rgba(193, 134, 93, 0.35);
+  color: var(--marron);
+}
+
+/* =========================
+   PRICE ALERT
+========================= */
+.price-alert {
+  margin-top: 0.2rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 12px;
+  background: rgba(193, 134, 93, 0.18);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--marron);
+}
+
+/* =========================
+   HIGHLIGHTS
+========================= */
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.4rem;
+}
+
+.highlight-item {
+  font-size: 0.75rem;
+  color: var(--marron);
+  opacity: 0.8;
+}
+
+/* =========================
+   META FOOTER
+========================= */
+.meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--marron);
+  opacity: 0.75;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 480px) {
+  .plan-card {
+    padding: 1.4rem 1.4rem 1.6rem;
+  }
+
+  .plan-card-header h3 {
+    font-size: 1.05rem;
+  }
+}

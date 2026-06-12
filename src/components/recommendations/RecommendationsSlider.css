@@ -1,0 +1,177 @@
+/* =========================
+   WRAPPER
+========================= */
+.slider-wrapper {
+  width: 100%;
+  margin: 4rem 0;
+  padding: 0 1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* =========================
+   TITLE
+========================= */
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--verde-bosque);
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.4px;
+}
+
+/* =========================
+   CAROUSEL BASE
+========================= */
+.carousel {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem 0;
+}
+
+/* =========================
+   TRACK (AUTO SCROLL)
+========================= */
+.carousel-track {
+  display: flex;
+  gap: 1.8rem;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.carousel:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+/* =========================
+   CARD
+========================= */
+.card {
+  min-width: 285px;
+  max-width: 285px;
+  padding: 1.5rem;
+  background: var(--crema);
+  border-radius: 20px;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(255,255,255,0.4);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================
+   CARD HEADER
+========================= */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--verde-bosque);
+  color: var(--blanco);
+  font-weight: 800;
+  font-size: 1rem;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 14px rgba(94, 129, 93, 0.45);
+}
+
+.user-info h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--marron);
+}
+
+.country {
+  font-size: 0.75rem;
+  color: #777;
+}
+
+/* =========================
+   STARS
+========================= */
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  font-size: 0.95rem;
+  color: #d6d6d6;
+}
+
+.star.filled {
+  color: #f5b301;
+  text-shadow: 0 0 6px rgba(245, 179, 1, 0.45);
+}
+
+/* =========================
+   COMMENT
+========================= */
+.comment {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #555;
+  font-style: italic;
+}
+
+/* =========================
+   ADD BUTTON
+========================= */
+.add-btn {
+  margin-top: 2.5rem;
+  padding: 0.7rem 1.6rem;
+  background: linear-gradient(135deg, var(--terracota), #b1744d);
+  color: var(--blanco);
+  border: none;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(193, 134, 93, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(193, 134, 93, 0.55);
+}
+
+/* =========================
+   KEYFRAMES
+========================= */
+@keyframes scroll {
+  0%  { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    min-width: 230px;
+    max-width: 230px;
+  }
+}
