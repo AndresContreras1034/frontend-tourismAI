@@ -4,7 +4,6 @@ import {
   FiCheck,
   FiClock,
   FiMapPin,
-  FiMessageCircle,
 } from "react-icons/fi";
 import "./Hero.css";
 
@@ -29,13 +28,6 @@ export default function Hero() {
           <div className="hero__actions">
             <button className="hero__cta" onClick={() => navigate("/expo")}>
               Abrir panel Expo <FiArrowRight aria-hidden="true" />
-            </button>
-            <button
-              className="hero__secondary"
-              onClick={() => navigate("/expo/registro")}
-            >
-              <FiMessageCircle aria-hidden="true" />
-              Crear perfil de muestra
             </button>
           </div>
           <div className="hero__trust" aria-label="Beneficios">

@@ -11,15 +11,8 @@ const FOOTER_DATA = {
       title: "Explorar",
       links: [
         { label: "Inicio", href: "/" },
-        { label: "Planes", href: "/plans" },
-        { label: "Mapa", href: "/map" },
-      ],
-    },
-    {
-      title: "Cuenta",
-      links: [
-        { label: "Iniciar sesión", href: "/login" },
-        { label: "Crear cuenta", href: "/register" },
+        { label: "Panel Expo", href: "/expo" },
+        { label: "Mapa", href: "/expo#mapa" },
       ],
     },
   ],
@@ -59,9 +52,8 @@ export default function Footer({ expoMode = false }) {
           ],
         },
         {
-          title: "Demostración",
+          title: "Información",
           links: [
-            { label: "Crear perfil", href: "/expo/registro" },
             { label: "Cómo funciona", href: "/#como-funciona" },
           ],
         },
@@ -78,7 +70,7 @@ export default function Footer({ expoMode = false }) {
           </h2>
           <p>
             {expoMode
-              ? "Versión Expo de Turismo AI con indicadores, mapa y perfiles locales de muestra."
+              ? "Versión beta pública de Tourism AI con recomendaciones, itinerarios y mapa, sin crear una cuenta."
               : FOOTER_DATA.brand.description}
           </p>
         </div>

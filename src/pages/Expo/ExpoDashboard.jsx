@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import {
   FiActivity,
-  FiArrowUpRight,
   FiCompass,
   FiMapPin,
   FiSearch,
@@ -492,9 +490,6 @@ export default function ExpoDashboard() {
                 {" "}Las búsquedas del panel se guardan en este dispositivo.
               </p>
             </div>
-            <Link className="expo-register-link" to="/expo/registro">
-              Crear perfil de muestra <FiArrowUpRight aria-hidden="true" />
-            </Link>
           </aside>
         </section>
 
