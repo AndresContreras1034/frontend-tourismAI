@@ -57,10 +57,11 @@ function FeatureCard({ image, title, description }) {
 // 🚀 COMPONENTE PRINCIPAL
 export default function Features() {
   return (
-    <section className="features-section">
+    <section className="features-section" id="como-funciona">
 
       {/* HEADER COMERCIAL */}
       <header className="features-header">
+        <span className="section-eyebrow">Así de fácil</span>
         <h2>Una nueva forma de descubrir planes</h2>
         <p>
           Tecnología + turismo + IA para que nunca más pierdas tiempo decidiendo qué hacer.

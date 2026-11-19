@@ -1,0 +1,1724 @@
+.expo-page {
+  display: flex;
+  min-height: 100svh;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse at 86% 12%, rgba(91, 67, 144, 0.14), transparent 34%),
+    #0b0d12;
+}
+
+.expo-main {
+  width: min(100% - 2.5rem, 1240px);
+  flex: 1;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0;
+}
+
+.expo-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.expo-eyebrow,
+.expo-panel-kicker {
+  color: var(--cyan-electric);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.expo-heading h1,
+.expo-register-card h1 {
+  margin: 0.65rem 0 0.75rem;
+  color: var(--white-neon);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 760;
+  letter-spacing: -0.06em;
+  line-height: 1.05;
+}
+
+.expo-heading p {
+  max-width: 680px;
+  margin: 0;
+  color: #aeb8c5;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.expo-mode-notice {
+  display: inline-flex;
+  min-width: max-content;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(139, 227, 211, 0.2);
+  border-radius: 999px;
+  padding: 0.65rem 0.9rem;
+  color: #c8d8d6;
+  font-size: 0.82rem;
+  background: rgba(139, 227, 211, 0.06);
+}
+
+.expo-live-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--cyan-electric);
+}
+
+.expo-trip-panel {
+  margin-bottom: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.15rem;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  background:
+    radial-gradient(ellipse at 10% 0, rgba(139, 227, 211, 0.08), transparent 35%),
+    linear-gradient(145deg, rgba(27, 32, 44, 0.94), rgba(17, 22, 31, 0.96));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.16);
+}
+
+.expo-trip-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.expo-trip-header h2 {
+  margin: 0.35rem 0 0.45rem;
+  color: var(--white-neon);
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  letter-spacing: -0.04em;
+}
+
+.expo-trip-header p {
+  max-width: 640px;
+  margin: 0;
+  color: #aeb8c5;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.expo-trip-local-badge {
+  flex: 0 0 auto;
+  border: 1px solid rgba(139, 227, 211, 0.18);
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+  color: #b6d9d3;
+  font-size: 0.72rem;
+  background: rgba(139, 227, 211, 0.06);
+}
+
+.expo-trip-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 0.9rem;
+}
+
+.expo-trip-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.expo-trip-field label,
+.expo-interest-field legend {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #dce1e8;
+  font-size: 0.8rem;
+  font-weight: 650;
+}
+
+.expo-trip-field label svg {
+  color: var(--cyan-electric);
+}
+
+.expo-trip-field select,
+.expo-trip-field input {
+  width: 100%;
+  min-height: 2.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.7rem;
+  padding: 0.6rem 0.75rem;
+  color: var(--white-neon);
+  background: #10141c;
+}
+
+.expo-trip-budget-note,
+.expo-trip-model-note {
+  margin: 0;
+  color: #8f9aa8;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.expo-trip-form .expo-interest-field,
+.expo-trip-budget-note,
+.expo-trip-actions {
+  grid-column: 1 / -1;
+}
+
+.expo-trip-form .expo-interest-field {
+  margin-top: 0.2rem;
+}
+
+.expo-trip-field select,
+.expo-trip-field input {
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.expo-trip-error {
+  margin: 0.8rem 0 0;
+  color: #ffaaa7;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.expo-plan-result {
+  display: grid;
+  gap: 1.15rem;
+  margin-top: 1.1rem;
+  border: 1px solid rgba(139, 227, 211, 0.22);
+  border-radius: 0.95rem;
+  padding: clamp(0.9rem, 2vw, 1.2rem);
+  background: rgba(8, 11, 17, 0.42);
+}
+
+.expo-plan-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.expo-plan-heading h3 {
+  margin: 0.35rem 0;
+  color: var(--white-neon);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+}
+
+.expo-plan-heading > strong {
+  flex: 0 0 auto;
+  color: var(--cyan-electric);
+  font-size: 0.78rem;
+}
+
+.expo-plan-overview {
+  margin: 0;
+  color: #aeb8c5;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.expo-plan-section {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.expo-plan-section h4 {
+  margin: 0;
+  color: #dce1e8;
+  font-size: 0.83rem;
+}
+
+.expo-plan-total {
+  margin: 0;
+  color: #d5fff7;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.expo-plan-price-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.expo-plan-price-list article,
+.expo-plan-card {
+  display: grid;
+  align-content: start;
+  gap: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.7rem;
+  padding: 0.65rem;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.expo-plan-price-list span,
+.expo-plan-card strong,
+.expo-plan-itinerary strong {
+  color: #e3e7ed;
+  font-size: 0.72rem;
+}
+
+.expo-plan-price-list strong {
+  color: var(--cyan-electric);
+  font-size: 0.78rem;
+}
+
+.expo-plan-price-list small,
+.expo-plan-card p,
+.expo-plan-card small,
+.expo-plan-itinerary p,
+.expo-plan-itinerary small,
+.expo-plan-tips li {
+  margin: 0;
+  color: #9da8b5;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.expo-plan-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 0.6rem;
+}
+
+.expo-plan-itinerary,
+.expo-plan-tips {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.expo-plan-itinerary li {
+  padding-left: 0.15rem;
+  color: #929eac;
+}
+
+.expo-plan-day {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--cyan-electric);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.expo-trip-field select option {
+  color: var(--white-neon);
+  background: #10141c;
+}
+
+.expo-trip-field select:focus,
+.expo-trip-field input:focus {
+  border-color: var(--cyan-electric);
+  outline: 2px solid rgba(139, 227, 211, 0.16);
+}
+
+.expo-interest-field {
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.expo-interest-field legend {
+  margin-bottom: 0.55rem;
+  padding: 0;
+}
+
+.expo-interest-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.expo-interest-chip {
+  min-height: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  color: #b7c1ce;
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.expo-interest-chip.selected {
+  border-color: rgba(139, 227, 211, 0.42);
+  color: #d5fff7;
+  background: rgba(139, 227, 211, 0.1);
+}
+
+.expo-trip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.expo-trip-submit,
+.expo-trip-reset {
+  display: inline-flex;
+  min-height: 2.65rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border-radius: 0.7rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.expo-trip-submit {
+  border: 0;
+  color: #11121a;
+  background: linear-gradient(115deg, #d0b4ff, #91e8d9);
+}
+
+.expo-trip-reset {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #b7c1ce;
+  background: transparent;
+}
+
+.expo-trip-notice {
+  margin: 0;
+  color: #b6d9d3;
+  font-size: 0.76rem;
+  line-height: 1.45;
+}
+
+.expo-trip-model-note strong {
+  color: #c5ced8;
+}
+
+.expo-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.expo-metric,
+.expo-panel {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.15rem;
+  background: linear-gradient(145deg, rgba(27, 32, 44, 0.94), rgba(17, 22, 31, 0.96));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.16);
+}
+
+.expo-metric {
+  display: grid;
+  min-width: 0;
+  gap: 0.55rem;
+  padding: 1.15rem;
+}
+
+.expo-metric-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: #b6c0cd;
+  font-size: 0.84rem;
+}
+
+.expo-metric-label svg {
+  flex: 0 0 auto;
+  color: var(--cyan-electric);
+}
+
+.expo-metric strong {
+  color: var(--white-neon);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.expo-metric small {
+  overflow: hidden;
+  color: #8f9aa8;
+  font-size: 0.75rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(270px, 0.85fr);
+  align-items: start;
+  gap: 1.1rem;
+}
+
+.expo-panel {
+  min-width: 0;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.expo-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.expo-panel-heading h2 {
+  margin: 0.35rem 0 0;
+  color: var(--white-neon);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  letter-spacing: -0.035em;
+}
+
+.expo-map-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(196, 167, 255, 0.18);
+  border-radius: 999px;
+  padding: 0.45rem 0.65rem;
+  color: var(--purple-core);
+  font-size: 0.76rem;
+  white-space: nowrap;
+}
+
+.expo-map-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(300px, 0.9fr);
+  align-items: start;
+  gap: 1.1rem;
+  margin-bottom: 1.1rem;
+}
+
+.expo-map-panel-heading p {
+  margin: 0.45rem 0 0;
+  color: #97a3b2;
+  font-size: 0.78rem;
+}
+
+.expo-map-panel .map-wrapper {
+  height: clamp(420px, 48vw, 600px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.9rem;
+  box-shadow: none;
+}
+
+.expo-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+  color: #aeb8c5;
+  font-size: 0.7rem;
+}
+
+.expo-map-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.expo-legend-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+}
+
+.expo-legend-dot.featured {
+  background: #10a995;
+  box-shadow: 0 0 0 3px rgba(16, 169, 149, 0.16);
+}
+
+.expo-legend-dot.zone {
+  background: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+.expo-legend-line {
+  width: 1.1rem;
+  border-top: 2px dashed #b79aff;
+}
+
+.expo-map-caption {
+  margin: 0.8rem 0 0;
+  color: #8f9aa8;
+  font-size: 0.77rem;
+  line-height: 1.55;
+}
+
+.expo-map-explorer {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.expo-map-explorer .expo-panel-heading {
+  margin-bottom: 0;
+}
+
+.expo-map-search {
+  display: flex;
+  min-height: 2.7rem;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 0.7rem;
+  padding: 0 0.75rem;
+  color: var(--cyan-electric);
+  background: rgba(8, 11, 17, 0.55);
+}
+
+.expo-map-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: var(--white-neon);
+  background: transparent;
+  font: inherit;
+  font-size: 0.78rem;
+}
+
+.expo-map-search input::placeholder {
+  color: #7e8997;
+}
+
+.expo-map-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.expo-map-filters button {
+  min-height: 1.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.3rem 0.58rem;
+  color: #aeb8c5;
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 0.68rem;
+  cursor: pointer;
+}
+
+.expo-map-filters button.active {
+  border-color: rgba(139, 227, 211, 0.42);
+  color: #d5fff7;
+  background: rgba(139, 227, 211, 0.1);
+}
+
+.expo-catalog-status {
+  margin: 0;
+  color: #aeb8c5;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.expo-catalog-status.error {
+  color: #ffaaa7;
+}
+
+.expo-map-plan-list {
+  display: grid;
+  max-height: 24rem;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0 0.25rem 0 0;
+  overflow: auto;
+  list-style: none;
+  scrollbar-color: rgba(183, 154, 255, 0.4) transparent;
+  scrollbar-width: thin;
+}
+
+.expo-map-plan-list li {
+  min-width: 0;
+}
+
+.expo-map-plan-list button {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 2rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 0.7rem;
+  padding: 0.55rem 0.45rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.025);
+  cursor: pointer;
+}
+
+.expo-map-plan-list button:hover,
+.expo-map-plan-list button.selected {
+  border-color: rgba(139, 227, 211, 0.25);
+  background: rgba(139, 227, 211, 0.06);
+}
+
+.expo-map-plan-copy {
+  display: grid;
+  min-width: 0;
+  gap: 0.15rem;
+}
+
+.expo-map-plan-copy strong {
+  overflow: hidden;
+  color: #e4e9ef;
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.expo-map-plan-copy small {
+  overflow: hidden;
+  color: #84909f;
+  font-size: 0.64rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expo-map-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #e7c780;
+  font-size: 0.68rem;
+}
+
+.expo-featured-routes {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 0.75rem;
+}
+
+.expo-featured-routes summary {
+  color: #d5fff7;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.expo-featured-routes article {
+  display: grid;
+  gap: 0.3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 0.7rem 0;
+}
+
+.expo-featured-routes article strong {
+  color: #e3e7ed;
+  font-size: 0.75rem;
+}
+
+.expo-featured-routes article p,
+.expo-featured-routes article small {
+  margin: 0;
+  color: #929eac;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.expo-place-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.expo-place-list li {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1rem 0;
+}
+
+.expo-place-index {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(139, 227, 211, 0.2);
+  border-radius: 0.65rem;
+  color: var(--cyan-electric);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.expo-place-list strong {
+  color: var(--white-neon);
+  font-size: 0.92rem;
+}
+
+.expo-place-list p {
+  margin: 0.2rem 0 0;
+  color: #98a4b3;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.expo-panel-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-top: 1.1rem;
+  border: 1px solid rgba(196, 167, 255, 0.17);
+  border-radius: 0.8rem;
+  padding: 0.8rem;
+  color: #c2b5dc;
+  background: rgba(196, 167, 255, 0.06);
+}
+
+.expo-panel-note svg {
+  flex: 0 0 auto;
+  margin-top: 0.12rem;
+  color: var(--purple-core);
+}
+
+.expo-panel-note p {
+  margin: 0;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.expo-register-link,
+.expo-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--cyan-electric);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.expo-register-link {
+  margin-top: 1.1rem;
+}
+
+.expo-register-link:hover,
+.expo-back-link:hover {
+  text-decoration: underline;
+}
+
+.expo-register-main {
+  display: grid;
+  width: min(100% - 2rem, 560px);
+  flex: 1;
+  align-content: center;
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.expo-register-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.4rem;
+  padding: clamp(1.25rem, 5vw, 2.5rem);
+  background:
+    radial-gradient(ellipse at 90% 0, rgba(196, 167, 255, 0.13), transparent 35%),
+    #151923;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.3);
+}
+
+.expo-register-icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.25rem;
+  place-items: center;
+  border-radius: 0.9rem;
+  color: #11121a;
+  background: linear-gradient(135deg, #d0b4ff, #91e8d9);
+  font-size: 1.3rem;
+}
+
+.expo-register-card h1 {
+  font-size: clamp(2rem, 6vw, 2.8rem);
+}
+
+.expo-register-card > p {
+  margin: 0;
+  color: #aeb8c5;
+  line-height: 1.65;
+}
+
+.expo-register-form {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.expo-register-form label {
+  margin-top: 0.35rem;
+  color: #dce1e8;
+  font-size: 0.84rem;
+  font-weight: 650;
+}
+
+.expo-register-form input {
+  width: 100%;
+  min-height: 2.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  color: var(--white-neon);
+  background: rgba(6, 8, 12, 0.55);
+}
+
+.expo-register-form input:focus {
+  border-color: var(--cyan-electric);
+  outline: 2px solid rgba(139, 227, 211, 0.18);
+}
+
+.expo-submit-button {
+  min-height: 3rem;
+  margin-top: 0.65rem;
+  border: 0;
+  border-radius: 0.8rem;
+  color: #11121a;
+  background: linear-gradient(115deg, #d0b4ff, #91e8d9);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.expo-register-error {
+  margin: 0.2rem 0 0;
+  color: #ffaaa7;
+  font-size: 0.82rem;
+}
+
+.expo-privacy-note {
+  margin: 1rem 0;
+  color: #8f9aa8;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.expo-back-link {
+  color: #c6b1f1;
+}
+
+@media (max-width: 900px) {
+  .expo-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .expo-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .expo-map-overview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .expo-plan-price-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .expo-activity-panel {
+    order: 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .expo-main {
+    width: min(100% - 1.5rem, 1240px);
+    padding-top: 2rem;
+  }
+
+  .expo-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .expo-metric {
+    padding: 0.9rem;
+  }
+
+  .expo-metric-label {
+    font-size: 0.75rem;
+  }
+
+  .expo-metric small {
+    font-size: 0.68rem;
+  }
+
+  .expo-mode-notice {
+    min-width: 0;
+    font-size: 0.74rem;
+  }
+
+  .expo-panel-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .expo-trip-header {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .expo-trip-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .expo-trip-form .expo-interest-field,
+  .expo-trip-budget-note,
+  .expo-trip-actions {
+    grid-column: auto;
+  }
+
+  .expo-plan-price-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .expo-plan-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .expo-map-panel .map-wrapper {
+    height: 430px;
+  }
+}
+
+@media (max-width: 380px) {
+  .expo-metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.expo-trip-form {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.expo-trip-field select {
+  min-height: 2.8rem;
+  font: inherit;
+  font-size: 0.84rem;
+}
+
+.expo-trip-field select:focus {
+  border-color: var(--cyan-electric);
+  outline: 2px solid rgba(139, 227, 211, 0.16);
+}
+
+.expo-trip-actions {
+  grid-column: 1 / -1;
+}
+
+.expo-recommendations {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.15rem;
+}
+
+.expo-recommendations-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.expo-recommendations-heading h3 {
+  margin: 0.3rem 0 0;
+  color: var(--white-neon);
+  font-size: 1rem;
+}
+
+.expo-recommendations-heading p {
+  margin: 0;
+  color: #8f9aa8;
+  font-size: 0.72rem;
+}
+
+.expo-recommendation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.expo-recommendation-card {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.8rem;
+  padding: 0.9rem;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.expo-recommendation-card.selected {
+  border-color: rgba(139, 227, 211, 0.48);
+  background: rgba(139, 227, 211, 0.07);
+}
+
+.expo-recommendation-rank {
+  color: var(--cyan-electric);
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+}
+
+.expo-recommendation-card h4 {
+  margin: 0;
+  color: #e3e7ed;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-transform: capitalize;
+}
+
+.expo-recommendation-card > p {
+  margin: 0;
+  color: #9da8b5;
+  font-size: 0.72rem;
+  text-transform: capitalize;
+}
+
+.expo-recommendation-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: #b7c1ce;
+  font-size: 0.69rem;
+}
+
+.expo-recommendation-rating svg {
+  color: #e8c97e;
+}
+
+.expo-recommendation-select,
+.expo-parking-card a {
+  display: inline-flex;
+  min-height: 2.35rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(139, 227, 211, 0.26);
+  border-radius: 0.6rem;
+  padding: 0.45rem 0.6rem;
+  color: #d5fff7;
+  background: rgba(139, 227, 211, 0.06);
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.expo-recommendation-select:hover,
+.expo-parking-card a:hover {
+  background: rgba(139, 227, 211, 0.13);
+}
+
+.expo-recommendation-select:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.expo-plan-heading > strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.expo-plan-heading > strong svg {
+  color: #e8c97e;
+}
+
+.expo-forecast-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.8rem;
+  border: 1px solid rgba(139, 227, 211, 0.2);
+  border-radius: 0.8rem;
+  padding: 0.9rem;
+  background: rgba(139, 227, 211, 0.045);
+}
+
+.expo-forecast-icon,
+.expo-forecast-extra-icon {
+  color: var(--cyan-electric);
+  font-size: 1.25rem;
+}
+
+.expo-forecast-copy h4 {
+  margin: 0.3rem 0;
+  color: #e3e7ed;
+  font-size: 0.84rem;
+  text-transform: capitalize;
+}
+
+.expo-forecast-copy > p {
+  margin: 0.25rem 0 0;
+  color: #aeb8c5;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.expo-forecast-copy .expo-weather-advice {
+  color: #d5fff7;
+  font-size: 0.78rem;
+}
+
+.expo-curiosity-list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #aeb8c5;
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.expo-route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.expo-route-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.7rem;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.expo-route-card > svg {
+  margin-top: 0.08rem;
+  color: var(--cyan-electric);
+}
+
+.expo-route-card strong {
+  color: #e3e7ed;
+  font-size: 0.74rem;
+}
+
+.expo-route-card p,
+.expo-parking-card p {
+  margin: 0.25rem 0 0;
+  color: #9da8b5;
+  font-size: 0.69rem;
+  line-height: 1.5;
+}
+
+.expo-route-card a {
+  display: inline-flex;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(139, 227, 211, 0.2);
+  border-radius: 0.45rem;
+  color: var(--cyan-electric);
+}
+
+.expo-parking-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+.expo-parking-card a {
+  flex: 0 0 auto;
+}
+
+.expo-claudia-panel {
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid rgba(190, 163, 255, 0.22);
+  border-radius: 0.85rem;
+  padding: 0.9rem;
+  background: rgba(190, 163, 255, 0.045);
+}
+
+.expo-claudia-panel > header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.expo-claudia-icon {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(190, 163, 255, 0.3);
+  border-radius: 0.6rem;
+  color: #d0b4ff;
+}
+
+.expo-claudia-panel h4 {
+  margin: 0;
+  color: #e3e7ed;
+  font-size: 0.82rem;
+}
+
+.expo-claudia-panel header p,
+.expo-claudia-welcome {
+  margin: 0.15rem 0 0;
+  color: #aeb8c5;
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.expo-claudia-messages {
+  display: grid;
+  max-height: 18rem;
+  gap: 0.55rem;
+  overflow: auto;
+  padding-right: 0.2rem;
+}
+
+.expo-claudia-message {
+  max-width: 88%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.65rem;
+  padding: 0.55rem 0.65rem;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.expo-claudia-message.user {
+  justify-self: end;
+  border-color: rgba(139, 227, 211, 0.16);
+  background: rgba(139, 227, 211, 0.055);
+}
+
+.expo-claudia-message strong {
+  color: #d0b4ff;
+  font-size: 0.66rem;
+}
+
+.expo-claudia-message p {
+  margin: 0.2rem 0 0;
+  color: #d2d8e0;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.expo-claudia-loading {
+  margin: 0;
+  color: #aeb8c5;
+  font-size: 0.7rem;
+}
+
+.expo-claudia-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.45rem;
+}
+
+.expo-claudia-form input {
+  min-width: 0;
+  min-height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.6rem;
+  padding: 0.55rem 0.7rem;
+  color: var(--white-neon);
+  background: #10141c;
+  font: inherit;
+  font-size: 0.76rem;
+}
+
+.expo-claudia-form input:focus {
+  border-color: #c0a3ff;
+  outline: 2px solid rgba(190, 163, 255, 0.15);
+}
+
+.expo-claudia-form button {
+  display: grid;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  place-items: center;
+  border: 0;
+  border-radius: 0.6rem;
+  color: #11121a;
+  background: #c0a3ff;
+  cursor: pointer;
+}
+
+.expo-claudia-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.expo-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+@media (max-width: 760px) {
+  .expo-recommendation-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .expo-recommendations-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 560px) {
+  .expo-trip-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .expo-trip-actions {
+    grid-column: auto;
+  }
+
+  .expo-route-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .expo-parking-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.expo-interest-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.expo-interest-chip svg {
+  font-size: 0.85rem;
+}
+
+.expo-interest-chip:disabled {
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.expo-quality-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+  gap: 1.25rem;
+  border: 1px solid rgba(139, 227, 211, 0.18);
+  border-radius: 0.9rem;
+  padding: 1rem;
+  background: linear-gradient(120deg, rgba(139, 227, 211, 0.055), rgba(196, 167, 255, 0.04));
+}
+
+.expo-quality-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.expo-quality-ring {
+  position: relative;
+  display: grid;
+  width: 5rem;
+  height: 5rem;
+  flex: 0 0 auto;
+  align-content: center;
+  justify-items: center;
+  border-radius: 50%;
+  background: conic-gradient(var(--cyan-electric) var(--quality-score), rgba(255, 255, 255, 0.1) 0);
+}
+
+.expo-quality-ring::before {
+  position: absolute;
+  inset: 0.32rem;
+  border-radius: inherit;
+  background: #121720;
+  content: "";
+}
+
+.expo-quality-ring strong,
+.expo-quality-ring small {
+  position: relative;
+  z-index: 1;
+}
+
+.expo-quality-ring strong {
+  color: #e4fff9;
+  font-size: 1.25rem;
+  line-height: 1.05;
+}
+
+.expo-quality-ring small {
+  color: #9da8b5;
+  font-size: 0.62rem;
+}
+
+.expo-quality-summary h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.3rem 0;
+  color: #e3e7ed;
+  font-size: 0.9rem;
+}
+
+.expo-quality-summary h4 svg {
+  color: var(--cyan-electric);
+}
+
+.expo-quality-summary p,
+.expo-quality-component span,
+.expo-quality-component strong {
+  margin: 0;
+  color: #9da8b5;
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+
+.expo-quality-components {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
+  gap: 0.7rem 1rem;
+}
+
+.expo-quality-component > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.expo-quality-component strong {
+  color: #d8e2e8;
+}
+
+.expo-quality-component progress {
+  display: block;
+  width: 100%;
+  height: 0.35rem;
+  margin-top: 0.3rem;
+  border: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  accent-color: var(--cyan-electric);
+}
+
+.expo-quality-component progress::-webkit-progress-bar {
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.expo-quality-component progress::-webkit-progress-value {
+  border-radius: 1rem;
+  background: var(--cyan-electric);
+}
+
+.expo-selection-reason {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  border-left: 2px solid rgba(196, 167, 255, 0.6);
+  padding: 0.3rem 0 0.3rem 0.75rem;
+  color: #c4b8db;
+}
+
+.expo-selection-reason svg {
+  flex: 0 0 auto;
+  margin-top: 0.12rem;
+}
+
+.expo-selection-reason p {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.expo-plan-map .map-wrapper {
+  min-height: 320px;
+  height: clamp(320px, 48vw, 460px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.8rem;
+  box-shadow: none;
+}
+
+.expo-map-empty {
+  margin: 0;
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  color: #aeb8c5;
+  font-size: 0.76rem;
+}
+
+.expo-parking-key {
+  display: inline-grid;
+  width: 0.9rem;
+  height: 0.9rem;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: #7854cc;
+  font-size: 0.58rem;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.expo-route-card {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+}
+
+.expo-parking-card {
+  display: grid;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.expo-parking-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.expo-parking-list li {
+  display: grid;
+  gap: 0.15rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 0.45rem;
+}
+
+.expo-parking-list strong {
+  color: #e3e7ed;
+  font-size: 0.73rem;
+}
+
+.expo-parking-list span,
+.expo-setting-tag,
+.expo-chat-image-note {
+  color: #9da8b5;
+  font-size: 0.67rem;
+}
+
+.expo-setting-tag {
+  display: inline-block;
+  margin: 0.2rem 0;
+  border: 1px solid rgba(139, 227, 211, 0.16);
+  border-radius: 999px;
+  padding: 0.15rem 0.45rem;
+  color: #b6d9d3;
+}
+
+.expo-setting-tag.indoor {
+  border-color: rgba(196, 167, 255, 0.2);
+  color: #d0b4ff;
+}
+
+.expo-claudia-photo-button {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(196, 167, 255, 0.24);
+  border-radius: 0.65rem;
+  padding: 0.55rem 0.7rem;
+  color: #d7c7f7;
+  background: rgba(196, 167, 255, 0.06);
+  font-size: 0.74rem;
+  cursor: pointer;
+}
+
+.expo-claudia-photo-button:hover {
+  background: rgba(196, 167, 255, 0.12);
+}
+
+.expo-claudia-photo-button:focus-within {
+  outline: 2px solid rgba(196, 167, 255, 0.55);
+  outline-offset: 2px;
+}
+
+.expo-claudia-privacy {
+  margin: -0.5rem 0 0;
+  color: #8f9aa8;
+  font-size: 0.65rem;
+}
+
+.expo-photo-preview {
+  position: relative;
+  display: grid;
+  width: fit-content;
+  gap: 0.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.7rem;
+  padding: 0.45rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.expo-photo-preview img {
+  width: auto;
+  max-width: 180px;
+  height: auto;
+  max-height: 140px;
+  border-radius: 0.4rem;
+  object-fit: cover;
+}
+
+.expo-photo-preview span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: 180px;
+  overflow: hidden;
+  color: #aeb8c5;
+  font-size: 0.65rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.expo-photo-preview button {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(8, 11, 17, 0.82);
+  cursor: pointer;
+}
+
+.expo-chat-image-note {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 680px) {
+  .expo-quality-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .expo-quality-components {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

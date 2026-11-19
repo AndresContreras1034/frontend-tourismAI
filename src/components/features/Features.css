@@ -3,14 +3,14 @@
    ========================================================= */
 
 :root {
-  --purple-core: #C07CFF;
-  --purple-glow: #9F47FF;
-  --cyan-electric: #3BE4F6;
-  --blue-tech: #1E75C4;
-  --white-neon: #F0F4F8;
-  --black-core: #0A0A0E;
-  --bg-dark: #14181D;
-  --canvas-shadow: #0A0D10;
+  --purple-core: #c4a7ff;
+  --purple-glow: #8b5cf6;
+  --cyan-electric: #8be3d3;
+  --blue-tech: #4670c7;
+  --white-neon: #f5f4fb;
+  --black-core: #0b0d12;
+  --bg-dark: #10131a;
+  --canvas-shadow: #0b0d12;
 
   --shadow-soft: 0 10px 25px rgba(159, 71, 255, 0.12);
   --shadow-strong: 0 24px 50px rgba(159, 71, 255, 0.25);
@@ -76,14 +76,18 @@
   text-align: center;
 }
 
+.features-header .section-eyebrow {
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
 .features-header h2 {
   font-size: clamp(2rem, 4vw, 3.1rem);
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.15;
   margin-bottom: 1.25rem;
-  color: var(--purple-core);
-  text-shadow: 0 0 30px rgba(192, 124, 255, 0.35);
+  color: var(--white-neon);
 }
 
 .features-header p {
@@ -108,11 +112,11 @@
 
 .feature-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(159, 71, 255, 0.15);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-lg);
   padding: 2.35rem 2.1rem 2.6rem;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   backdrop-filter: blur(8px);
   transition:
@@ -122,9 +126,9 @@
 }
 
 .feature-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-strong);
-  border-color: rgba(159, 71, 255, 0.45);
+  border-color: rgba(196, 167, 255, 0.38);
 }
 
 /* Glow border on hover */
@@ -192,13 +196,13 @@
   font-weight: 700;
   letter-spacing: -0.015em;
   margin-bottom: 0.75rem;
-  color: var(--cyan-electric);
+  color: var(--white-neon);
 }
 
 .feature-card-content p {
   font-size: 0.95rem;
   line-height: 1.65;
-  color: rgba(240, 244, 248, 0.6);
+  color: #aeb8c5;
 }
 
 /* =========================================================

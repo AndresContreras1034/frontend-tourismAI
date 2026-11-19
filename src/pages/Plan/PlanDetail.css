@@ -91,13 +91,13 @@
 }
 
 /* ================= SECCIONES ================= */
-section {
+.plan-page section {
   padding: 4rem 2rem;
   max-width: 1100px;
   margin: auto;
 }
 
-h2 {
+.plan-page h2 {
   margin-bottom: 1.5rem;
 }
 

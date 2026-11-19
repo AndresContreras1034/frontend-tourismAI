@@ -1,109 +1,66 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import clsx from "clsx";
-import { FiZap } from "react-icons/fi";
+import {
+  FiArrowRight,
+  FiCheck,
+  FiClock,
+  FiMapPin,
+  FiMessageCircle,
+} from "react-icons/fi";
 import "./Hero.css";
-
-const MESSAGES = [
-  "¿Sin plan hoy? Yo lo resuelvo 😏",
-  "En segundos tienes algo brutal 🔥",
-  "Dime qué te gusta y te sorprendo 👀",
-  "Menos buscar, más disfrutar 🎉",
-  "Tu plan perfecto está a un click ⚡",
-];
-
-const TRUST = [
-  "Resultados en segundos ⚡",
-  "Recomendaciones reales ⭐",
-  "Experiencias hechas para ti 🎯",
-];
 
 export default function Hero() {
   const navigate = useNavigate();
 
-  const [msgIndex, setMsgIndex] = useState(0);
-  const [trustIndex, setTrustIndex] = useState(0);
-
-  useEffect(() => {
-    const t1 = setInterval(() => {
-      setMsgIndex((p) => (p + 1) % MESSAGES.length);
-    }, 4200);
-
-    const t2 = setInterval(() => {
-      setTrustIndex((p) => (p + 1) % TRUST.length);
-    }, 3500);
-
-    return () => {
-      clearInterval(t1);
-      clearInterval(t2);
-    };
-  }, []);
-
-  const goChat = () => {
-    navigate("/chat?start=true");
-  };
-
   return (
     <section className="hero">
-
-      {/* fondo */}
-      <div className="hero__bg" />
-      <div className="hero__overlay" />
-
       <div className="hero__container">
-
-        {/* izquierda */}
         <div className="hero__left">
-
+          <div className="hero__eyebrow">
+            <span />
+            Expo Ingeniería · Tourism AI
+          </div>
           <h1 className="hero__title">
-            Encuentra el <span>plan perfecto</span><br />
-            en segundos
+            Turismo con datos <span>y experiencias.</span>
           </h1>
-
           <p className="hero__subtitle">
-            Habla con claudIA y descubre qué hacer según tu estilo,
-            tiempo y presupuesto.
+            Explora un panel interactivo de Bogotá, conoce experiencias en el
+            mapa y prueba la versión de exhibición sin iniciar sesión.
           </p>
-
-          <button className="hero__cta" onClick={goChat}>
-            <FiZap />
-            claudiA Recomienda
-          </button>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={trustIndex}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
-              className="hero__trust"
+          <div className="hero__actions">
+            <button className="hero__cta" onClick={() => navigate("/expo")}>
+              Abrir panel Expo <FiArrowRight aria-hidden="true" />
+            </button>
+            <button
+              className="hero__secondary"
+              onClick={() => navigate("/expo/registro")}
             >
-              {TRUST[trustIndex]}
-            </motion.div>
-          </AnimatePresence>
-
+              <FiMessageCircle aria-hidden="true" />
+              Crear perfil de muestra
+            </button>
+          </div>
+          <div className="hero__trust" aria-label="Beneficios">
+            <span><FiCheck aria-hidden="true" /> Ideas para ti</span>
+            <span><FiCheck aria-hidden="true" /> Planes flexibles</span>
+            <span><FiCheck aria-hidden="true" /> Bogotá</span>
+          </div>
         </div>
-
-        {/* derecha (IA floating bubble) */}
         <div className="hero__right">
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={msgIndex}
-              initial={{ opacity: 0, scale: 0.9, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: -10 }}
-              transition={{ duration: 0.5 }}
-              className={clsx("hero__bubble")}
-            >
-              {MESSAGES[msgIndex]}
-            </motion.div>
-          </AnimatePresence>
-
+          <div className="hero__orbit" aria-hidden="true" />
+          <article className="hero__preview">
+            <div className="hero__art">
+              <span className="hero__art-label">Una idea para hoy</span>
+              <span className="hero__pin"><FiMapPin size={24} /></span>
+            </div>
+            <div className="hero__place-info">
+              <span className="hero__place-kicker">Bogotá · cultura y café</span>
+              <h2>Una tarde para perderse por La Candelaria</h2>
+              <div className="hero__place-meta">
+                <span><FiClock aria-hidden="true" /> 3–4 horas</span>
+                <span><FiMapPin aria-hidden="true" /> Centro histórico</span>
+              </div>
+            </div>
+          </article>
         </div>
-
       </div>
     </section>
   );

@@ -1,4 +1,13 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import {
+  CircleMarker,
+  MapContainer,
+  Marker,
+  Polyline,
+  Popup,
+  TileLayer,
+  Tooltip,
+  useMap,
+} from "react-leaflet";
 import { useEffect, useMemo } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -14,36 +23,99 @@ L.Icon.Default.mergeOptions({
   shadowUrl:
     "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
 });
+const DEFAULT_MARKER_ICON = new L.Icon.Default();
 
 /**
  * 📍 Ajusta el mapa automáticamente a los puntos
  */
-function FitBounds({ points }) {
+function FitBounds({ points, routes }) {
   const map = useMap();
 
   useEffect(() => {
-    if (!points || points.length === 0) return;
-
-    const bounds = points
-      .filter((p) => p.lat && p.lng)
-      .map((p) => [p.lat, p.lng]);
+    const bounds = points.map((point) => [point.lat, point.lng]);
+    routes.forEach((route) => bounds.push(...route.positions));
 
     if (bounds.length > 0) {
-      map.fitBounds(bounds, { padding: [60, 60] });
+      map.fitBounds(bounds, { padding: [36, 36], maxZoom: 13, animate: false });
     }
-  }, [points, map]);
+  }, [points, routes, map]);
 
   return null;
 }
 
-export default function MapView({ center, points = [] }) {
+function FocusPoint({ point }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (point) {
+      map.flyTo([point.lat, point.lng], point.zoom || 14, { duration: 0.8 });
+    }
+  }, [map, point]);
+
+  return null;
+}
+
+function PointPopup({ point }) {
+  return (
+    <div className="map-popup">
+      <h4>{point.name}</h4>
+      {point.description && <p>{point.description}</p>}
+      {point.plans?.length > 0 && (
+        <ul className="map-popup-plan-list">
+          {point.plans.map((plan) => (
+            <li key={plan.name}>
+              <span>{plan.name}</span>
+              <small>
+                ★ {Number(plan.rating_average).toFixed(1)} ·{" "}
+                {Number(plan.rating_samples).toLocaleString("es-CO")} ratings
+              </small>
+            </li>
+          ))}
+        </ul>
+      )}
+      {point.details?.length > 0 && (
+        <ul className="map-popup-details">
+          {point.details.map((detail) => (
+            <li key={detail}>{detail}</li>
+          ))}
+        </ul>
+      )}
+      {point.approximate && (
+        <p className="map-popup-note">Zona aproximada; no es una dirección exacta.</p>
+      )}
+    </div>
+  );
+}
+
+export default function MapView({
+  center,
+  points = [],
+  routes = [],
+  focusPoint = null,
+  showFallback = true,
+}) {
   const validPoints = useMemo(() => {
     return points.filter(
       (p) =>
-        typeof p.lat === "number" &&
-        typeof p.lng === "number"
+        Number.isFinite(p.lat) &&
+        Number.isFinite(p.lng)
     );
   }, [points]);
+  const validRoutes = useMemo(
+    () =>
+      routes.filter(
+        (route) =>
+          Array.isArray(route.positions) &&
+          route.positions.length > 1 &&
+          route.positions.every(
+            (position) =>
+              Array.isArray(position) &&
+              position.length === 2 &&
+              position.every(Number.isFinite)
+          )
+      ),
+    [routes]
+  );
 
   const defaultCenter = center
     ? [center.lat, center.lng]
@@ -58,42 +130,83 @@ export default function MapView({ center, points = [] }) {
         scrollWheelZoom={true}
         className="map"
       >
-
-        {/* 🗺️ Base map */}
+        <FitBounds points={validPoints} routes={validRoutes} />
+        <FocusPoint point={focusPoint} />
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {/* 📍 Auto zoom a puntos */}
-        <FitBounds points={validPoints} />
-
-        {/* 📌 Markers */}
-        {validPoints.map((point, index) => (
-          <Marker
-            key={point.id || index}
-            position={[point.lat, point.lng]}
+        {validRoutes.map((route) => (
+          <Polyline
+            key={route.id}
+            positions={route.positions}
+            pathOptions={{
+              color: route.color || "#8b5cf6",
+              weight: 5,
+              opacity: 0.82,
+              dashArray: "8 8",
+            }}
           >
-            <Popup>
-              <div className="map-popup">
-                <h4>{point.name}</h4>
-                {point.description && (
-                  <p>{point.description}</p>
-                )}
-              </div>
-            </Popup>
-          </Marker>
+            <Tooltip sticky>{route.name}</Tooltip>
+          </Polyline>
         ))}
 
-        {/* 🧭 fallback si no hay puntos */}
-        {validPoints.length === 0 && (
-          <Marker position={defaultCenter}>
-            <Popup>📍 Punto principal del plan</Popup>
-          </Marker>
+        {validPoints.map((point, index) =>
+          point.kind === "cluster" ? (
+            <CircleMarker
+              key={point.id || index}
+              center={[point.lat, point.lng]}
+              radius={Math.min(25, 12 + point.count)}
+              pathOptions={{
+                color: "#b79aff",
+                fillColor: "#7854cc",
+                fillOpacity: 0.83,
+                weight: 2,
+              }}
+            >
+              <Tooltip permanent direction="center" className="map-cluster-tooltip">
+                {point.count}
+              </Tooltip>
+              <Popup>
+                <PointPopup point={point} />
+              </Popup>
+            </CircleMarker>
+          ) : (
+            <Marker
+              key={point.id || index}
+              position={[point.lat, point.lng]}
+              icon={
+                point.kind === "parking"
+                  ? L.divIcon({
+                      className: "map-parking-marker",
+                      html: "<span>P</span>",
+                      iconSize: [28, 28],
+                      iconAnchor: [14, 14],
+                    })
+                  : point.approximate
+                    ? DEFAULT_MARKER_ICON
+                    : L.divIcon({
+                      className: "map-featured-marker",
+                      html: "<span></span>",
+                      iconSize: [24, 24],
+                      iconAnchor: [12, 12],
+                    })
+              }
+            >
+              <Popup>
+                <PointPopup point={point} />
+              </Popup>
+            </Marker>
+          )
         )}
 
+        {showFallback && validPoints.length === 0 && (
+          <Marker position={defaultCenter}>
+            <Popup>Punto principal del plan</Popup>
+          </Marker>
+        )}
       </MapContainer>
-
     </div>
   );
 }

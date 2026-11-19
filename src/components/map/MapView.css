@@ -60,6 +60,88 @@
   color: var(--marron);
 }
 
+.map-popup-plan-list,
+.map-popup-details {
+  display: grid;
+  gap: 0.45rem;
+  max-height: 220px;
+  margin: 0.55rem 0 0;
+  padding: 0 0 0 1rem;
+  overflow-y: auto;
+  color: var(--marron);
+}
+
+.map-popup-plan-list li {
+  padding-bottom: 0.35rem;
+}
+
+.map-popup-plan-list span,
+.map-popup-plan-list small {
+  display: block;
+}
+
+.map-popup-plan-list span {
+  font-weight: 650;
+}
+
+.map-popup-plan-list small,
+.map-popup-details li,
+.map-popup .map-popup-note {
+  color: #647064;
+  font-size: 0.75rem;
+}
+
+.map-popup .map-popup-note {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.map-featured-marker {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+}
+
+.map-featured-marker span {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #10a995;
+  box-shadow: 0 0 0 5px rgba(16, 169, 149, 0.25), 0 4px 12px #17221f66;
+}
+
+.map-parking-marker {
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: #7854cc;
+  box-shadow: 0 0 0 3px rgba(120, 84, 204, 0.24), 0 4px 12px #17221f66;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.map-parking-marker span {
+  line-height: 1;
+}
+
+.map-cluster-tooltip {
+  border: 0;
+  padding: 0;
+  color: #fff;
+  background: transparent;
+  box-shadow: none;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.map-cluster-tooltip::before {
+  display: none;
+}
+
 /* PRECIO */
 .map-popup .price {
   margin-top: 0.4rem;

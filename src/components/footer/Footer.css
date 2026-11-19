@@ -1,116 +1,78 @@
-/* =========================
-   VARIABLES DE COLOR
-========================= */
-:root {
-  --verde-bosque: #5E815D;
-  --terracota: #C1865D;
-  --crema: #F2E7D5;
-  --marron: #4A3C31;
-  --verde-musgo: #A3B18A;
-  --blanco: #ffffff;
-}
-
-/* =========================
-   FOOTER GENERAL
-========================= */
 .footer {
-  background-color: var(--verde-musgo);
-  color: var(--marron);
-  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #bec7d3;
+  background: #0d1016;
 }
 
-/* =========================
-   CONTENEDOR
-========================= */
 .footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 1.5rem;
   display: grid;
+  width: min(100% - 3rem, 1180px);
+  margin: 0 auto;
+  padding: 3.5rem 0;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
-/* =========================
-   SECCIONES
-========================= */
 .footer-section h4 {
-  margin-bottom: 0.8rem;
-  color: var(--verde-bosque);
-  font-size: 1.1rem;
+  margin: 0 0 1rem;
+  color: #f5f4fb;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .footer-section p {
+  color: #9da8b5;
   font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--marron);
+  line-height: 1.7;
 }
 
-/* =========================
-   BRAND
-========================= */
 .footer-logo {
-  font-size: 1.6rem;
-  color: var(--verde-bosque);
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.6rem;
+  color: #f5f4fb;
+  font-size: 1.3rem;
+  letter-spacing: -0.04em;
 }
 
-/* =========================
-   LINKS
-========================= */
 .footer-section ul {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .footer-section li {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.65rem;
 }
 
 .footer-section a {
-  color: var(--marron);
-  text-decoration: none;
+  color: #aeb8c5;
   font-size: 0.95rem;
-  transition: color 0.2s;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .footer-section a:hover {
-  color: var(--terracota);
-  text-decoration: underline;
+  color: var(--cyan-electric);
 }
 
-/* =========================
-   CONTACTO
-========================= */
 .footer-section address {
   font-style: normal;
 }
 
-/* =========================
-   FOOTER BOTTOM
-========================= */
 .footer-bottom {
-  background-color: var(--verde-bosque);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.1rem 1rem;
   text-align: center;
-  padding: 0.8rem 1rem;
 }
 
 .footer-bottom p {
   margin: 0;
+  color: #8792a0;
   font-size: 0.85rem;
-  color: var(--crema);
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 480px) {
   .footer-container {
-    padding: 2rem 1.2rem;
-  }
-
-  .footer-logo {
-    font-size: 1.4rem;
+    width: min(100% - 2rem, 1180px);
+    padding: 2.5rem 0;
   }
 }

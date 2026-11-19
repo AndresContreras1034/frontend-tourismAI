@@ -10,6 +10,8 @@ import PlanDetail from "../pages/Plan/PlanDetail";
 
 import Profile from "../pages/Profile/Profile";
 import Chat from "../pages/Chat/Chat";
+import ExpoDashboard from "../pages/Expo/ExpoDashboard";
+import ExpoRegister from "../pages/Expo/ExpoRegister";
 
 // 🔥 ONBOARDING
 import Onboarding from "../pages/Onboarding/Onboarding";
@@ -53,6 +55,8 @@ export default function AppRouter() {
 
         {/* HOME */}
         <Route path="/" element={<Home />} />
+        <Route path="/expo" element={<ExpoDashboard />} />
+        <Route path="/expo/registro" element={<ExpoRegister />} />
 
         {/* AUTH */}
         <Route

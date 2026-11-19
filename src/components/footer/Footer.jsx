@@ -46,8 +46,27 @@ function FooterSection({ title, links }) {
   );
 }
 
-export default function Footer() {
+export default function Footer({ expoMode = false }) {
   const year = new Date().getFullYear();
+  const sections = expoMode
+    ? [
+        {
+          title: "Explorar",
+          links: [
+            { label: "Inicio", href: "/" },
+            { label: "Panel Expo", href: "/expo" },
+            { label: "Mapa", href: "/expo#mapa" },
+          ],
+        },
+        {
+          title: "Demostración",
+          links: [
+            { label: "Crear perfil", href: "/expo/registro" },
+            { label: "Cómo funciona", href: "/#como-funciona" },
+          ],
+        },
+      ]
+    : FOOTER_DATA.sections;
 
   return (
     <footer className="footer">
@@ -57,11 +76,15 @@ export default function Footer() {
           <h2 className="footer-logo">
             {FOOTER_DATA.brand.name}
           </h2>
-          <p>{FOOTER_DATA.brand.description}</p>
+          <p>
+            {expoMode
+              ? "Versión Expo de Turismo AI con indicadores, mapa y perfiles locales de muestra."
+              : FOOTER_DATA.brand.description}
+          </p>
         </div>
 
         {/* SECTIONS */}
-        {FOOTER_DATA.sections.map((section) => (
+        {sections.map((section) => (
           <FooterSection
             key={section.title}
             title={section.title}
