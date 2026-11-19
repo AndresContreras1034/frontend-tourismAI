@@ -24,6 +24,8 @@ recomendaciones del modelo ML; la persona elige una antes de pedir a DeepSeek un
 itinerario de un día. Incluye estimaciones de comida, bebidas, cerveza y
 transporte; restaurantes, curiosidades y consejos; el pronóstico de mañana de
 Open-Meteo, adaptación a la lluvia, un índice heurístico del plan y ClaudIA.
+Si el backend no logra obtener el pronóstico, el botón de actualización consulta
+Open-Meteo directamente desde el navegador sin regenerar el itinerario.
 El mapa usa Leaflet y OpenStreetMap: las coordenadas provienen de geocodificación
 OSM o de un catálogo local aproximado; los parqueaderos son etiquetas OSM y
 pueden no reflejar disponibilidad ni tarifas. Esta función requiere

@@ -119,6 +119,68 @@ function isModelInfo(model) {
   );
 }
 
+function isWeatherForecast(weather) {
+  return (
+    weather?.available === true &&
+    isText(weather.date, 20) &&
+    Number.isInteger(weather.weather_code) &&
+    isText(weather.condition, 80) &&
+    Number.isFinite(weather.temp_min_c) &&
+    Number.isFinite(weather.temp_max_c) &&
+    Number.isFinite(weather.precipitation_probability_percent) &&
+    Number.isFinite(weather.wind_speed_kmh)
+  );
+}
+
+function getWeatherDescription(code) {
+  if (code === 0) return "Despejado";
+  if ([1, 2, 3].includes(code)) return "Parcialmente nublado";
+  if ([45, 48].includes(code)) return "Niebla";
+  if ([51, 53, 55, 56, 57].includes(code)) return "Llovizna";
+  if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return "Lluvia";
+  if ([71, 73, 75, 77, 85, 86].includes(code)) return "Nieve";
+  if ([95, 96, 99].includes(code)) return "Tormenta";
+  return "Condiciones variables";
+}
+
+async function fetchOpenMeteoForecast() {
+  const url = new URL("https://api.open-meteo.com/v1/forecast");
+  url.search = new URLSearchParams({
+    latitude: "4.711",
+    longitude: "-74.0721",
+    daily: "weather_code,temperature_2m_min,temperature_2m_max,precipitation_probability_max,wind_speed_10m_max",
+    timezone: "America/Bogota",
+    forecast_days: "2",
+  }).toString();
+
+  const response = await fetch(url, {
+    signal: AbortSignal.timeout(10_000),
+  });
+  if (!response.ok) {
+    throw new Error(`Open-Meteo respondió con estado ${response.status}.`);
+  }
+
+  const result = await readJsonResponse(response);
+  const daily = result?.daily;
+  const weatherCode = daily?.weather_code?.[1];
+  const weather = {
+    available: true,
+    date: daily?.time?.[1],
+    weather_code: weatherCode,
+    condition: getWeatherDescription(weatherCode),
+    temp_min_c: daily?.temperature_2m_min?.[1],
+    temp_max_c: daily?.temperature_2m_max?.[1],
+    precipitation_probability_percent:
+      daily?.precipitation_probability_max?.[1],
+    wind_speed_kmh: daily?.wind_speed_10m_max?.[1],
+    source: "Open-Meteo",
+  };
+  if (!isWeatherForecast(weather)) {
+    throw new Error("Open-Meteo devolvió un pronóstico incompleto.");
+  }
+  return weather;
+}
+
 function isText(value, maxLength = 500) {
   return (
     typeof value === "string" &&
@@ -359,6 +421,8 @@ export default function ExpoTripPlanner() {
   const [chatPhotoPreview, setChatPhotoPreview] = useState("");
   const [serviceCheck, setServiceCheck] = useState(null);
   const [isWakingServices, setIsWakingServices] = useState(false);
+  const [isWeatherRefreshing, setIsWeatherRefreshing] = useState(false);
+  const [weatherRefreshMessage, setWeatherRefreshMessage] = useState("");
 
   useEffect(() => {
     if (!chatPhotoPreview) return undefined;
@@ -415,6 +479,75 @@ export default function ExpoTripPlanner() {
     setChatPhoto(null);
     setChatPhotoPreview("");
     setError("");
+    setWeatherRefreshMessage("");
+  };
+
+  const handleWeatherRefresh = async () => {
+    if (
+      !plan ||
+      plan.weather.available ||
+      isLoading ||
+      isChatLoading ||
+      isWeatherRefreshing
+    ) {
+      return;
+    }
+
+    setIsWeatherRefreshing(true);
+    setIsLoading(true);
+    setLoadingAction("weather");
+    setWeatherRefreshMessage("Volviendo a consultar Open-Meteo...");
+
+    try {
+      const weather = await fetchOpenMeteoForecast();
+
+      const updatedPlan = {
+        ...plan,
+        weather,
+        weather_advice:
+          "Pronóstico actualizado desde Open-Meteo. Confirma las condiciones antes de salir.",
+      };
+      setPlan(updatedPlan);
+      try {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({
+            version: 6,
+            budgetCategory,
+            companion,
+            travelTypes,
+            recommendations,
+            selectedRecommendation,
+            model: modelInfo,
+            plan: updatedPlan,
+            calculatedAt: new Date().toISOString(),
+          })
+        );
+      } catch (storageError) {
+        console.error(
+          "No se pudo guardar el pronóstico actualizado.",
+          storageError
+        );
+        setWeatherRefreshMessage(
+          "El clima se actualizó, pero no se pudo guardar en este dispositivo."
+        );
+        return;
+      }
+      setWeatherRefreshMessage(
+        "Pronóstico actualizado sin volver a generar el itinerario."
+      );
+    } catch (requestError) {
+      console.error("No se pudo actualizar el pronóstico.", requestError);
+      setWeatherRefreshMessage(
+        requestError instanceof TypeError
+          ? "No se pudo contactar el servicio de clima. Inténtalo de nuevo."
+          : requestError.message
+      );
+    } finally {
+      setIsWeatherRefreshing(false);
+      setIsLoading(false);
+      setLoadingAction("");
+    }
   };
 
   const handleBudgetChange = (event) => {
@@ -1092,6 +1225,28 @@ export default function ExpoTripPlanner() {
               <p className="expo-weather-advice">
                 {plan.weather_advice}
               </p>
+              {!plan.weather.available && (
+                <>
+                  <button
+                    className="expo-trip-wake"
+                    type="button"
+                    onClick={handleWeatherRefresh}
+                    disabled={
+                      isLoading || isChatLoading || isWeatherRefreshing
+                    }
+                  >
+                    <FiRefreshCw aria-hidden="true" />
+                    {isWeatherRefreshing
+                      ? "Consultando clima..."
+                      : "Volver a consultar el clima"}
+                  </button>
+                  {weatherRefreshMessage && (
+                    <p className="expo-trip-service-status" role="status">
+                      {weatherRefreshMessage}
+                    </p>
+                  )}
+                </>
+              )}
             </div>
             {plan.weather.available &&
               plan.weather.precipitation_probability_percent >= 40 && (
