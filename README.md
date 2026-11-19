@@ -65,5 +65,6 @@ ni uses una URL local como API de producción.
 En Render Free, los servicios se suspenden tras 15 minutos sin tráfico y pueden
 tardar alrededor de un minuto en reactivarse. La beta reintenta errores
 transitorios del recomendador y despierta el backend antes de llamar a DeepSeek;
-el arranque en frío sigue siendo posible mientras los servicios estén en el plan
-gratuito.
+el botón «Despertar servicios» permite comprobar ambos antes de una demostración.
+El arranque en frío sigue siendo posible mientras los servicios estén en el plan
+gratuito; el botón no los mantiene activos cuando nadie usa la aplicación.

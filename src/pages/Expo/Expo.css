@@ -113,6 +113,45 @@
   background: rgba(139, 227, 211, 0.06);
 }
 
+.expo-trip-header-tools {
+  display: grid;
+  justify-items: end;
+  gap: 0.6rem;
+}
+
+.expo-trip-wake {
+  display: inline-flex;
+  min-height: 2.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(139, 227, 211, 0.3);
+  border-radius: 0.7rem;
+  padding: 0.5rem 0.75rem;
+  color: #d5fff7;
+  background: rgba(139, 227, 211, 0.08);
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.expo-trip-wake:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.expo-trip-service-status {
+  margin: 0 0 1rem;
+  color: #b6d9d3;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.expo-trip-service-status.error {
+  color: #ffaaa7;
+}
+
 .expo-trip-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -357,11 +357,53 @@ export default function ExpoTripPlanner() {
   const [chatError, setChatError] = useState("");
   const [chatPhoto, setChatPhoto] = useState(null);
   const [chatPhotoPreview, setChatPhotoPreview] = useState("");
+  const [serviceCheck, setServiceCheck] = useState(null);
+  const [isWakingServices, setIsWakingServices] = useState(false);
 
   useEffect(() => {
     if (!chatPhotoPreview) return undefined;
     return () => URL.revokeObjectURL(chatPhotoPreview);
   }, [chatPhotoPreview]);
+
+  const handleWakeServices = async () => {
+    if (isWakingServices || isLoading || isChatLoading) return;
+
+    setIsWakingServices(true);
+    setServiceCheck({
+      status: "checking",
+      message: "Comprobando servicios. Render puede tardar hasta un minuto en despertarlos...",
+    });
+
+    const ping = async (baseUrl) => {
+      const serviceUrl = `${baseUrl.replace(/\/+$/, "")}/`;
+      const response = await fetchWithRenderRetry(serviceUrl);
+      if (!response.ok) {
+        throw new Error(`El servicio respondió con estado ${response.status}.`);
+      }
+
+      const result = await readJsonResponse(response);
+      if (result.status !== "ok") {
+        throw new Error("El servicio no confirmó que está listo.");
+      }
+    };
+
+    const [mlResult, backendResult] = await Promise.allSettled([
+      ping(AI_SERVICE_URL),
+      ping(BACKEND_URL),
+    ]);
+    const mlReady = mlResult.status === "fulfilled";
+    const backendReady = backendResult.status === "fulfilled";
+    setServiceCheck({
+      status: mlReady && backendReady ? "ready" : "error",
+      message:
+        mlReady && backendReady
+          ? "Backend y ML están activos. Ya puedes probar la beta."
+          : `Backend: ${backendReady ? "activo" : "no responde"} · ML: ${
+              mlReady ? "activo" : "no responde"
+            }. Espera unos segundos y vuelve a intentar.`,
+    });
+    setIsWakingServices(false);
+  };
 
   const clearResults = () => {
     setRecommendations(null);
@@ -774,10 +816,31 @@ export default function ExpoTripPlanner() {
             itinerario de un día con clima, mapa, transporte y consejos.
           </p>
         </div>
-        <span className="expo-trip-local-badge">
-          La búsqueda se guarda solo en este dispositivo
-        </span>
+        <div className="expo-trip-header-tools">
+          <span className="expo-trip-local-badge">
+            La búsqueda se guarda solo en este dispositivo
+          </span>
+          <button
+            className="expo-trip-wake"
+            type="button"
+            onClick={handleWakeServices}
+            disabled={isWakingServices || isLoading || isChatLoading}
+          >
+            <FiRefreshCw aria-hidden="true" />
+            {isWakingServices ? "Despertando..." : "Despertar servicios"}
+          </button>
+        </div>
       </header>
+
+      {serviceCheck && (
+        <p
+          className={`expo-trip-service-status ${serviceCheck.status}`}
+          role={serviceCheck.status === "error" ? "alert" : "status"}
+          aria-live="polite"
+        >
+          {serviceCheck.message}
+        </p>
+      )}
 
       <form className="expo-trip-form" onSubmit={handleRecommendations}>
         <div className="expo-trip-field">
