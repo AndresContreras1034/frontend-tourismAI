@@ -10,6 +10,7 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import MapView from "../../components/map/MapView";
 import plans from "../../data/plans.json";
+import { fetchWithRenderRetry } from "../../services/render.service";
 import ExpoTripPlanner from "./ExpoTripPlanner";
 import "./Expo.css";
 
@@ -181,9 +182,10 @@ export default function ExpoDashboard() {
 
     async function loadCatalog() {
       try {
-        const response = await fetch(`${AI_SERVICE_URL}/catalog`, {
-          signal: controller.signal,
-        });
+        const response = await fetchWithRenderRetry(
+          `${AI_SERVICE_URL}/catalog`,
+          { signal: controller.signal }
+        );
         if (!response.ok) {
           throw new Error(`El servicio respondió con estado ${response.status}.`);
         }
@@ -418,7 +420,9 @@ export default function ExpoDashboard() {
 
             {catalogStatus === "loading" && (
               <p className="expo-catalog-status" role="status">
-                Cargando las experiencias y calificaciones del modelo...
+                Cargando experiencias y calificaciones. Si el servicio gratuito
+                estaba inactivo, Render puede tardar hasta un minuto en
+                reactivarlo...
               </p>
             )}
             {catalogStatus === "error" && (

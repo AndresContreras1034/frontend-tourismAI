@@ -28,6 +28,7 @@ import {
 } from "react-icons/fi";
 import plans from "../../data/plans.json";
 import MapView from "../../components/map/MapView";
+import { fetchWithRenderRetry } from "../../services/render.service";
 
 const STORAGE_KEY = "expo-trip-plan-v6";
 const AI_SERVICE_URL =
@@ -429,16 +430,25 @@ export default function ExpoTripPlanner() {
     clearResults();
 
     try {
-      const response = await fetch(`${AI_SERVICE_URL}/recommendations`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          tipo_viaje: travelTypes,
-          presupuesto: budgetCategory,
-          companions: companion,
-          top_n: 3,
-        }),
-      });
+      const response = await fetchWithRenderRetry(
+        `${AI_SERVICE_URL}/recommendations`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            tipo_viaje: travelTypes,
+            presupuesto: budgetCategory,
+            companions: companion,
+            top_n: 3,
+          }),
+        },
+        {
+          onRetry: (attempt) =>
+            setNotice(
+              `Render está reactivando el servicio ML; reintentando (${attempt}/2)...`
+            ),
+        }
+      );
       const result = await readJsonResponse(response);
       if (!response.ok) {
         throw new Error(
@@ -470,7 +480,7 @@ export default function ExpoTripPlanner() {
       console.error("No se pudieron cargar las recomendaciones ML.", requestError);
       setError(
         requestError instanceof TypeError
-          ? "No se pudo conectar con el servicio ML. Verifica que esté encendido."
+          ? "El servicio ML gratuito puede tardar hasta un minuto en despertar. Espera un poco y vuelve a intentarlo."
           : requestError.message
       );
     } finally {
@@ -495,10 +505,27 @@ export default function ExpoTripPlanner() {
     setChatError("");
     setIsLoading(true);
     setLoadingAction("plan");
-    setNotice("DeepSeek está preparando un itinerario de un día y consultando el clima...");
+    setNotice(
+      "Activando el backend gratuito si estaba inactivo; puede tardar hasta un minuto..."
+    );
     setError("");
 
     try {
+      const healthResponse = await fetchWithRenderRetry(`${BACKEND_URL}/`, {}, {
+        onRetry: (attempt) =>
+          setNotice(
+            `Render está reactivando el backend; esperando (${attempt}/2)...`
+          ),
+      });
+      if (!healthResponse.ok) {
+        throw new Error(
+          `El backend respondió con estado ${healthResponse.status} al reactivarse.`
+        );
+      }
+      setNotice(
+        "DeepSeek está preparando un itinerario de un día y consultando el clima..."
+      );
+
       const response = await fetch(`${BACKEND_URL}/ai/expo-plan`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -553,7 +580,7 @@ export default function ExpoTripPlanner() {
       console.error("No se pudo crear el itinerario.", requestError);
       setError(
         requestError instanceof TypeError
-          ? "No se pudo conectar con el backend. Verifica que esté encendido."
+          ? "El backend gratuito puede tardar hasta un minuto en despertar. Espera un poco y vuelve a intentarlo."
           : requestError.message
       );
     } finally {
@@ -617,6 +644,13 @@ export default function ExpoTripPlanner() {
     setIsChatLoading(true);
 
     try {
+      const healthResponse = await fetchWithRenderRetry(`${BACKEND_URL}/`);
+      if (!healthResponse.ok) {
+        throw new Error(
+          `El backend respondió con estado ${healthResponse.status} al reactivarse.`
+        );
+      }
+
       const payload = {
         planName: selectedRecommendation.plan_turistico_bogota,
         budgetCategory,

@@ -61,3 +61,9 @@ base de datos ni el servicio FastAPI del recomendador. Aloja esos servicios por
 separado, configura `VITE_API_URL` con la URL pública del backend y configura sus
 variables secretas en el proveedor correspondiente. No publiques archivos `.env`
 ni uses una URL local como API de producción.
+
+En Render Free, los servicios se suspenden tras 15 minutos sin tráfico y pueden
+tardar alrededor de un minuto en reactivarse. La beta reintenta errores
+transitorios del recomendador y despierta el backend antes de llamar a DeepSeek;
+el arranque en frío sigue siendo posible mientras los servicios estén en el plan
+gratuito.
