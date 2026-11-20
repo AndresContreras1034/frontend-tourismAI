@@ -10,6 +10,12 @@ The application combines a lightweight recommendation interface, Leaflet maps, O
 - [Expo dashboard](https://frontend-tourism-ai.vercel.app/expo)
 - [Backend repository](https://github.com/AndresContreras1034/backend-tourismAI)
 
+## Interface Preview
+
+<p align="center">
+  <img src="./docs/tourism-ai-expo.png" alt="Tourism AI Expo dashboard" width="900">
+</p>
+
 ## Implemented Features
 
 - Tourism plan recommendation interface
