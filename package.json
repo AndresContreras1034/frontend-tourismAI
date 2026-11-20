@@ -1,5 +1,7 @@
 {
   "name": "tourism-ai",
+  "description": "React tourism planning interface with maps, weather, recommendations, and AI itinerary support",
+  "homepage": "https://frontend-tourism-ai.vercel.app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
